@@ -178,4 +178,15 @@ body {
     #info {
         font-size: 12px; /* Bilgi metnini biraz küçült */
     }
+
+    /* ================== MOBİL İÇİN SLIDER GÜNCELLEMESİ ================== */
+    #slider-container {
+        /* Alttan uzaklığı azaltarak daha görünür yapalım */
+        bottom: 15px; 
+        /* Kenarlardaki boşluğu artıralım */
+        width: 95%; 
+        /* Dikeyde kapladığı alanı azaltalım */
+        padding: 8px 15px; 
+    }
+    /* ==================================================================== */
 }
