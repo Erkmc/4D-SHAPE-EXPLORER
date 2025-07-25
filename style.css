@@ -1,0 +1,181 @@
+/* General Layout & Theming */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1d;
+    color: #c5c6c7;
+    overflow: hidden;
+}
+
+#container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Left Menu Panel */
+#shape-selector {
+    width: 280px;
+    padding: 20px;
+    background-color: #2c2c34;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    z-index: 10;
+    /* Kutu modellemesini düzeltmek için eklendi */
+    box-sizing: border-box;
+}
+
+#shape-selector h3 {
+    color: #61dafb;
+    border-bottom: 2px solid #61dafb;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+#shape-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#shape-list li {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    background-color: #454552;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#shape-list li:hover {
+    background-color: #5a5a66;
+    transform: translateX(5px);
+}
+
+#shape-list li.active {
+    background-color: #007acc;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Right 3D Viewer Panel */
+#renderer-container {
+    flex-grow: 1;
+    position: relative;
+}
+
+#info {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    z-index: 5;
+    max-width: calc(100% - 28px); /* Bilgi kutusunun taşmasını engelle */
+}
+
+/* Slider Controls */
+#slider-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 10px;
+    z-index: 5;
+    width: 90%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+#slider-container span {
+    color: #fff;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+#w-slider {
+    width: 100%; /* Slider'ın kapsayıcıya yayılmasını sağla */
+    cursor: pointer;
+}
+
+/* SEO & İçerik Stilleri */
+.main-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #007acc;
+}
+
+#shape-description-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #454552;
+}
+
+#shape-description-container h2 {
+    color: #61dafb;
+    margin-top: 0;
+    font-size: 18px;
+}
+
+#shape-description-container p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #c5c6c7;
+}
+
+
+/* ================================================================= */
+/* ============= MOBİL UYUMLULUK (RESPONSIVE DESIGN) =============== */
+/* ================================================================= */
+
+/* Ekran genişliği 768px'den (tablet dikey modu) daha küçük olduğunda... */
+@media (max-width: 768px) {
+    /* Ana konteyneri dikey olarak (alt alta) sırala */
+    #container {
+        flex-direction: column;
+    }
+
+    /* Sol menüyü tam genişlik yap ve yüksekliğini sınırla */
+    #shape-selector {
+        width: 100%;
+        height: 45vh; /* Ekran yüksekliğinin %45'i */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Gölgeyi alta al */
+        padding: 15px;
+    }
+
+    /* 3D görüntüleyici geri kalan tüm yüksekliği doldursun */
+    #renderer-container {
+        height: 55vh; /* Ekran yüksekliğinin %55'i */
+    }
+
+    /* Başlıkların ve metinlerin boyutunu mobil için ayarla */
+    .main-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    #shape-selector h3 {
+        font-size: 18px;
+    }
+
+    #shape-list li {
+        padding: 14px 15px; /* Tıklama alanını büyüt */
+    }
+
+    #shape-description-container {
+        margin-top: 20px;
+    }
+    
+    #info {
+        font-size: 12px; /* Bilgi metnini biraz küçült */
+    }
+}

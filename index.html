@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4D Cube (Tesseract) Explorer & Visualizer</title>
+    <meta name="description" content="Interactively explore a 4D Cube (Tesseract), Glome, 16-Cell, and other 4th-dimensional shapes. Rotate and visualize hypershapes in real-time right in your browser.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <!-- Left Menu Area -->
+        <div id="shape-selector">
+            <h1 class="main-title">4D Shape Explorer</h1>
+            <h3>Select a Shape</h3>
+            <ul id="shape-list">
+                <!-- ================== GÜNCELLEME ================== -->
+                <li data-shape="tesseract" class="active">Cube → Tesseract</li>
+                <li data-shape="framed_cube">Framed Cube</li>
+                <li data-shape="triangular_pyramid">Triangular Pyramid → 5-Cell</li>
+                <li data-shape="octahedron">Octahedron → 16-Cell</li>
+                <li data-shape="sphere">Sphere → Glome</li>
+                <!-- =============================================== -->
+            </ul>
+            <div id="shape-description-container">
+                <h2>What is this?</h2>
+                <p id="shape-info">Select a shape from the list to learn more about it.</p>
+            </div>
+        </div>
+
+        <!-- Right 3D Viewer Area -->
+        <div id="renderer-container">
+            <div id="info">Rotate: Drag (mouse) or Swipe (touch) | Zoom: Scroll or Pinch</div>
+            <div id="slider-container">
+                <span>3D</span>
+                <input type="range" min="0" max="1" value="0" step="0.01" id="w-slider" title="4th Dimension Depth">
+                <span>4D</span>
+            </div>
+        </div>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
