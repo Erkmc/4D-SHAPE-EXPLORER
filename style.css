@@ -21,7 +21,6 @@ body {
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
     overflow-y: auto;
     z-index: 10;
-    /* Kutu modellemesini düzeltmek için eklendi */
     box-sizing: border-box;
 }
 
@@ -64,35 +63,42 @@ body {
     position: relative;
 }
 
-#info {
+/* =================== GÜNCELLEME BAŞLANGICI =================== */
+
+/* Info ve Slider'ı içeren ana kapsayıcı */
+#top-controls-container {
     position: absolute;
     top: 10px;
     left: 10px;
-    padding: 8px 12px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 5px;
-    color: #fff;
-    font-size: 14px;
+    display: flex; /* Elemanları yan yana dizmek için */
+    align-items: center; /* Dikeyde ortalamak için */
+    gap: 20px; /* Aralarına boşluk koymak için */
     z-index: 5;
-    max-width: calc(100% - 28px); /* Bilgi kutusunun taşmasını engelle */
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 8px 15px;
+    border-radius: 8px;
+    flex-wrap: wrap; /* Mobil için: Sığmazsa alt satıra geç */
 }
 
-/* Slider Controls */
+/* Bilgi metni için stil */
+#info {
+    /* Artık mutlak konumlandırmaya ihtiyacı yok */
+    color: #fff;
+    font-size: 14px;
+}
+
+/* Slider kapsayıcısı için stil */
 #slider-container {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    /* Artık mutlak konumlandırmaya ihtiyacı yok */
     display: flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px 20px;
-    border-radius: 10px;
-    z-index: 5;
-    width: 90%;
-    max-width: 400px;
-    box-sizing: border-box;
+    /* Arka plan ve padding üst kapsayıcıya taşındı */
+    width: auto; /* Genişliği içeriğine göre ayarla */
+    max-width: 250px; /* Çok uzamasını engelle */
 }
+
+/* ==================== GÜNCELLEME SONU ===================== */
+
 
 #slider-container span {
     color: #fff;
@@ -101,7 +107,8 @@ body {
 }
 
 #w-slider {
-    width: 100%; /* Slider'ın kapsayıcıya yayılmasını sağla */
+    width: 100%;
+    min-width: 120px; /* Çok daralmasını engelle */
     cursor: pointer;
 }
 
@@ -132,61 +139,40 @@ body {
     color: #c5c6c7;
 }
 
-
-/* ================================================================= */
-/* ============= MOBİL UYUMLULUK (RESPONSIVE DESIGN) =============== */
-/* ================================================================= */
-
-/* Ekran genişliği 768px'den (tablet dikey modu) daha küçük olduğunda... */
+/* MOBİL UYUMLULUK */
 @media (max-width: 768px) {
-    /* Ana konteyneri dikey olarak (alt alta) sırala */
     #container {
         flex-direction: column;
     }
 
-    /* Sol menüyü tam genişlik yap ve yüksekliğini sınırla */
     #shape-selector {
         width: 100%;
-        height: 45vh; /* Ekran yüksekliğinin %45'i */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Gölgeyi alta al */
+        height: 45vh;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         padding: 15px;
     }
 
-    /* 3D görüntüleyici geri kalan tüm yüksekliği doldursun */
     #renderer-container {
-        height: 55vh; /* Ekran yüksekliğinin %55'i */
+        height: 55vh;
     }
 
-    /* Başlıkların ve metinlerin boyutunu mobil için ayarla */
-    .main-title {
-        font-size: 20px;
-        margin-bottom: 15px;
-    }
-
-    #shape-selector h3 {
-        font-size: 18px;
-    }
-
-    #shape-list li {
-        padding: 14px 15px; /* Tıklama alanını büyüt */
-    }
-
-    #shape-description-container {
-        margin-top: 20px;
-    }
+    .main-title { font-size: 20px; margin-bottom: 15px; }
+    #shape-selector h3 { font-size: 18px; }
+    #shape-list li { padding: 14px 15px; }
+    #shape-description-container { margin-top: 20px; }
     
-    #info {
-        font-size: 12px; /* Bilgi metnini biraz küçült */
+    /* Mobil için üst kontroller */
+    #top-controls-container {
+        flex-direction: column; /* Kontrolleri alt alta diz */
+        align-items: flex-start; /* Sola hizala */
+        gap: 10px; /* Aradaki boşluğu azalt */
     }
 
-    /* ================== MOBİL İÇİN SLIDER GÜNCELLEMESİ ================== */
+    #info { font-size: 12px; }
+
     #slider-container {
-        /* Alttan uzaklığı azaltarak daha görünür yapalım */
-        bottom: 15px; 
-        /* Kenarlardaki boşluğu artıralım */
-        width: 95%; 
-        /* Dikeyde kapladığı alanı azaltalım */
-        padding: 8px 15px; 
+        width: 100%; /* Kapsayıcının tamamını kullan */
+        max-width: none;
+        padding: 0;
     }
-    /* ==================================================================== */
 }
